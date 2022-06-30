@@ -2,19 +2,22 @@ package com.example.swcoaching.board;
 
 import com.example.swcoaching.board.jpa.PostEntity;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
  * 게시물
  */
+@Setter
 @ToString
 @Getter
 public class Post {
-  private final Long id;
+  private final Long id; // PK
 
-  private final String title;
+  private final String title; // 제목
 
-  private final String contents;
+  private final String contents; // 내용
+
 
   public Post(Long id, String title, String contents) {
     this.id = id;

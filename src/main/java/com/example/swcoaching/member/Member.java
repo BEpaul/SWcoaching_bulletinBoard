@@ -3,11 +3,11 @@ package com.example.swcoaching.member;
 import com.example.swcoaching.member.jpa.MemberEntity;
 
 public class Member {
-  private final Long id;
-  private final String username;
-  private final String password;
-  private final String name;
-  private final String remark;
+  private final Long id; // PK
+  private final String username; // ID
+  private final String password; // PW
+  private final String name; // 이름
+  private final String remark; // ?
 
   public Member(Long id, String username, String password, String name, String remark) {
     this.id = id;

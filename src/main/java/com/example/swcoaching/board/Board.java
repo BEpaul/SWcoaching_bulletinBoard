@@ -1,28 +1,32 @@
 package com.example.swcoaching.board;
 
 import com.example.swcoaching.board.jpa.BoardEntity;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Setter
 @ToString
 @Getter
 public class Board {
-  private final Long id;
+  private final Long id; // pk
 
-  private final String title;
+  private final String title; // 제목
 
-  private final String remark;
+  private final String remark; // 게시판 설명
 
-  private final List<Post> posts;
+  private final List<Post> posts; // 게시글 리스트
 
+
+
+  @Builder
   public Board(Long id, String title, String remark, List<Post> posts) {
     this.id = id;
     this.title = title;
     this.remark = remark;
     this.posts = posts;
+
   }
 
   public static Board of(BoardEntity boardEntity) {
@@ -33,4 +37,7 @@ public class Board {
             boardEntity.getRemark(),
             posts);
   }
+
+
+
 }
