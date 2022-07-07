@@ -8,7 +8,6 @@ import lombok.ToString;
 /**
  * 게시물
  */
-@Setter
 @ToString
 @Getter
 public class Post {

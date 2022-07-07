@@ -1,6 +1,10 @@
 package com.example.swcoaching.board.jpa;
 
+import com.example.swcoaching.board.Post;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +19,7 @@ import javax.persistence.Table;
  * 게시물
  */
 @Getter
+@NoArgsConstructor
 @Table(name = "post")
 @Entity
 public class PostEntity {
@@ -32,4 +37,16 @@ public class PostEntity {
   @JoinColumn(name = "boardId")
   private BoardEntity board;
 
+  @Builder
+  public PostEntity(Long id, String title, String contents) {
+    this.id = id;
+    this.title = title;
+    this.contents = contents;
+  }
+
+  // 게시글 업데이트를 수행하는 로직
+  public void updatePost(Post post) {
+    this.title = post.getTitle();
+    this.contents = post.getContents();
+  }
 }

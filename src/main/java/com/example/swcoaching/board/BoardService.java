@@ -9,21 +9,4 @@ import java.util.List;
 public interface BoardService {
 
 
-  // create
-  BoardEntity createBoard(BoardEntity boardEntity);
-
-  // read
-  Board findById(long id);
-
-  List<Board> findBoardAll();
-
-
-  // update
-  void updateBoard(Long id, Board board);
-
-  // delete
-  void deleteBoard(Long id);
-
-  // 페이징 처리
-  Page<Board> pageList(Pageable pageable);
 }
