@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 #CI/CD
 
+=======
+>>>>>>> f2e1706b276bc9e55e620a316531a40d16fed30d
 name: ci
 
 on:
@@ -41,4 +44,8 @@ jobs:
           SLACK_USERNAME: 배포 결과 알려 드림
           SLACK_COLOR: ${{ job.status }}
           SLACK_FOOTER: '이건 테스트 배포 입니다.'
+<<<<<<< HEAD
         if: always()
+=======
+        if: always()
+>>>>>>> f2e1706b276bc9e55e620a316531a40d16fed30d
