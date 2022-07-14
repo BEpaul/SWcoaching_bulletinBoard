@@ -2,12 +2,15 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>게시글 자세히보기</title>
 </head>
 <body>
 
 <h2 th:text="${post.title}"></h2>
-<p th:text="${post.contents}"></p>
+<p th:inline="text">작성일 : [[${#temporals.format(post.createdDate, 'yyyy-MM-dd HH:mm')}]]</p>
+<!--작성자 : <p th:text="${post.writer}"></p>-->
+<p>작성자 : [[${post.writer}]]</p>
+내용<p th:text="${post.contents}"></p>
 
 <!-- 수정/삭제 -->
 <div>
@@ -15,7 +18,7 @@
         <button>수정</button>
     </a>
 
-    <form id="delete-form" th:action="@{'/deletePost' + ${post.id}}" method="post">
+    <form id="delete-form" th:action="@{'/post/delete/' + ${post.id}}" method="post">
         <input type="hidden" name="_method" value="delete"/>
         <button id="delete-btn">삭제</button>
     </form>

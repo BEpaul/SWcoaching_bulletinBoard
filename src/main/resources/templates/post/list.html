@@ -1,23 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>게시글 목록</title>
 
-    <link rel="stylesheet" th:href="@{/css/board.css}">
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td, tr, th {border: 1px solid black; padding: 1px;}
+    </style>
+<!--        <link rel="stylesheet" th:href="@{/css/board.css}">-->
 </head>
 <body>
+
 <!-- HEADER -->
 <div th:insert="common/header.html" id="header"></div>
 
-<a th:href="@{/post/create}">글쓰기</a>
-
+<!-- 글쓰기 -->
+<a th:href="@{/post/create}">
+    <button>글쓰기</button>
+</a>
+<br>
 <table>
     <thead>
     <tr>
         <th class="one wide">번호</th>
         <th class="ten wide">제목</th>
-        <th class="two wide">내용</th>
+        <th class="two wide">작성자</th>
+        <th class="three wide">작성일</th>
     </tr>
     </thead>
 
@@ -28,16 +39,42 @@
             <span th:text="${post.id}"></span>
         </td>
         <td>
-            <a th:href="@{'/post/detail' + ${postId}}">
-                <span th:text="${post.title}"></span>
+            <a th:href="@{'/post/detail/' + ${post.id}}">
+            <span th:text="${post.title}"></span>
             </a>
         </td>
         <td>
-            <span th:text="${post.contents}"></span>
+            <span th:text="${post.writer}"></span>
+        </td>
+        <td>
+            <span th:text="${#temporals.format(post.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
         </td>
     </tr>
     </tbody>
 </table>
+
+<!--총 게시글 개수-->
+<p>
+총 게시글 개수 :
+<span th:text="${totalPostCnt}"></span>
+</p>
+
+<!-- 페이징 -->
+<div>
+    <span th:each="pageNum : ${pageList}" th:inline="text">
+        <a th:href="@{'/post/?page=' + ${pageNum}}">[[${pageNum}]]</a>
+    </span>
+</div>
+
+<!-- 검색 form -->
+<form action="/board/search" method="GET">
+    <div>
+        <input name="keyword" type="text" placeholder="검색어를 입력해주세요.">
+
+        <button>검색</button>
+    </div>
+</form>
+
 
 <!-- FOOTER -->
 <div th:insert="common/footer.html" id="footer"></div>

@@ -1,9 +1,11 @@
 package com.example.swcoaching.controller;
 
+import com.example.swcoaching.board.Post;
 import com.example.swcoaching.board.PostNotFoundException;
 import com.example.swcoaching.board.PostService;
 import com.example.swcoaching.board.jpa.PostEntity;
 import com.example.swcoaching.board.jpa.PostRepository;
+import lombok.AllArgsConstructor;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,7 +26,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 class PostRestControllerTest {
+    @Autowired
     PostRepository postRepository;
+
+    @Autowired
     PostService postService;
 
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection") // 해당 경고문자 무시
@@ -35,13 +40,15 @@ class PostRestControllerTest {
     @Test
     void 게시판_생성(){
         Long id = 10L;
-        String title = "myTitle";
-        String contents = "myContents";
+        String title = "제목1";
+        String contents = "네네1";
+        String writer = "김민혁1";
 
-        postService.createPost(PostEntity.builder()
+        postService.createPost(Post.builder()
                 .id(id)
                 .title(title)
                 .contents(contents)
+                .writer(writer)
                 .build()
         );
 
@@ -72,23 +79,24 @@ class PostRestControllerTest {
         //given
         String title = "myTitle";
         String contents = "myContents";
+        String writer = "paulGod";
 
-        postService.createPost(PostEntity.builder()
+        postService.createPost(Post.builder()
                 .id(0L)
                 .title(title)
                 .contents(contents)
+                .writer(writer)
                 .build()
         );
-        System.out.println("포스트서비스 :" + postService.findPostAll());
 
         //when
         List<PostEntity> postEntityList = postRepository.findAll();
 
         //then
-        System.out.println("포스트엔티티 첫 요소:" +postEntityList.get(0));
-        PostEntity postEntity = postEntityList.get(0);
+        PostEntity postEntity = postEntityList.get(2);
         assertThat(postEntity.getTitle()).isEqualTo(title);
         assertThat(postEntity.getContents()).isEqualTo(contents);
+        assertThat(postEntity.getWriter()).isEqualTo(writer);
     }
 
 

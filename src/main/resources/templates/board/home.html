@@ -1,10 +1,20 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>게시판</title>
+    <title>홈</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 <p th:text="'안녕하세요. 시작화면입니다.'" >안녕하세요. ~~~</p>
+<div>
+    <p>
+        <h2>게시판 이동하기</h2>
+    </p>
+    <a th:href="@{'post'}">
+        <li>자유게시판</li>
+    </a>
+        <li>질문답변 게시판</li>
+
+</div>
 </body>
 </html>

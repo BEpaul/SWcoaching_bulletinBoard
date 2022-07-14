@@ -7,6 +7,7 @@ import com.example.swcoaching.board.jpa.PostEntity;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -17,6 +18,8 @@ import java.util.Map;
 public class PostRestController {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
+
+    @Autowired
     private final PostService postService;
 
     // 게시판 찾기
@@ -33,15 +36,6 @@ public class PostRestController {
         postService.deletePost(postId);
     }
 
-
-    // 게시판 저장
-    @PostMapping("/createPost/{postId}")
-    public String createPost(PostEntity postEntity) {
-        postService.createPost(postEntity);
-        return "";
-    }
-
-    //
 
     // 4회차 미팅
     // 예외처리

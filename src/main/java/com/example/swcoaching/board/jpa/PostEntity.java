@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Table(name = "post")
 @Entity
-public class PostEntity {
+public class PostEntity extends TimeEntity{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -33,20 +33,27 @@ public class PostEntity {
   @Column(columnDefinition = "text")
   private String contents;
 
+  @Column(length = 100)
+  private String writer;
+
+  @Column(length = 10)
+  private Long hit;
+
   @ManyToOne
   @JoinColumn(name = "boardId")
   private BoardEntity board;
 
   @Builder
-  public PostEntity(Long id, String title, String contents) {
+  public PostEntity(Long id, String title, String contents, String writer, Long hit) {
     this.id = id;
     this.title = title;
     this.contents = contents;
+    this.writer = writer;
+    this.hit = hit;
   }
 
-  // 게시글 업데이트를 수행하는 로직
-  public void updatePost(Post post) {
-    this.title = post.getTitle();
-    this.contents = post.getContents();
+  public void updateHit(Long hit) {
+    this.hit = hit;
   }
+
 }

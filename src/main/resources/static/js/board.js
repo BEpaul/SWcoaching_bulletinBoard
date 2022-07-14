@@ -1,0 +1,1 @@
+console.log(post); // post를 콘솔로 찍어보는 스크립트

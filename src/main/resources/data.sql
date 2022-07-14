@@ -12,10 +12,10 @@ VALUES
     (1,'free board','this is free board. Keep a rule and manner'),
     (2,'QnA','this is QnA board. Keep a rule and manner');
 
-TRUNCATE TABLE post;
-INSERT INTO post(board_id, title, contents, writer)
-VALUES
-    (1, 'I want to study Spring hard.','do not work well...', 'Paul'),
-    (1, 'Would you like to study with me?','it is difficult study alone. Please let me know!','Andy');
+-- TRUNCATE TABLE post;
+-- INSERT INTO post(board_id, title, contents, writer)
+-- VALUES
+--     (1, 'I want to study Spring hard.','do not work well...', 'Paul'),
+--     (1, 'Would you like to study with me?','it is difficult study alone. Please let me know!','Andy');
 
 SET FOREIGN_KEY_CHECKS=1;

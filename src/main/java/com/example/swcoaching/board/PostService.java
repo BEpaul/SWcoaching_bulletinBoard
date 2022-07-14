@@ -12,21 +12,29 @@ import java.util.Optional;
 public interface PostService {
 
     // create
-    PostEntity createPost(PostEntity postEntity);
+    Long createPost(Post post);
 
     // read
     Post findById(long id);
 
     // 전체 read
-    List<Post> findPostAll();
+    List<Post> getPostList(Integer pageNum);
 
-
-    // update
-    void updateBoard(Long id, Post post);
+    // 상세 보기
+    Post getPost(Long id);
 
     // delete
     void deletePost(Long id);
 
+    // 검색 기능
+    List<Post> searchPost(String keyword);
+
     // 페이징 처리
-    Page<Post> pageList(Pageable pageable);
+    Long getPostCount();
+
+    Integer[] getPageList(Integer curPageNum);
+
+    // 조회수
+//    int updateHit(Long id);
+
 }

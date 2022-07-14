@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>게시판 생성</title>
 </head>
 <body>
-<form  action="/list" method="post">
+<form  action="/post/create" method="post">
     제목 : <input type="text" name="title"> <br>
-    내용 : <input type="text" name="contents"> <br>
-    <textarea name="content"></textarea><br>
-
+    작성자 : <input type="text" name="writer"> <br>
+    <textarea name="contents"></textarea><br><br>
     <input type="submit" value="등록">
 </form>
 </body>
