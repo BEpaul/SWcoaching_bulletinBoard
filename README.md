@@ -52,3 +52,11 @@ BUILD SUCCESSFUL in 3s
 #### 1. 도커가 제대로 설치 되었는가?
 #### 2. JDK 17이 설치되었는가?
 #### 그 이외의 문제는 자세한 상황과 함께 슬랙으로 알려주세요. 
+
+### 도커 애플리케이션 접속 하기
+
+#### skku-app 은 docker-compose.yml 에서 정의한 이름
+
+```shell
+$ docker exec -it skku-app sh
+```
